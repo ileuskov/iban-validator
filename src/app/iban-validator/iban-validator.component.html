@@ -1,0 +1,39 @@
+<form
+  [formGroup]="ibanForm"
+  #form="ngForm"
+  (ngSubmit)="onSubmit()"
+  class="iban-form"
+>
+  <p>Enter an IBAN to check if it's valid or not</p>
+  <div class="iban-input">
+    <label for="ibanLabel"> IBAN: </label>
+    <input
+      id="ibanLabel"
+      type="text"
+      formControlName="iban"
+      placeholder="DE123..."
+    />
+  </div>
+  <div class="iban-input-status">
+    The form status is:
+    <span
+      [ngClass]="ibanForm.valid ? 'iban-input-valid' : 'iban-input-invalid'"
+    >
+      {{ ibanForm.status }}</span
+    >
+  </div>
+  <div class="iban-submit">
+    <button type="submit" [disabled]="!ibanForm.valid">
+      <b>Validate IBAN</b>
+    </button>
+  </div>
+
+  <div
+    [ngClass]="isIbanValid ? 'ibanValid' : 'ibanNotValid'"
+    *ngIf="subscriptionIsBack"
+  >
+    <div *ngIf="isIbanValid; then thenBlock; else elseBlock"></div>
+    <ng-template #thenBlock>Congratulations your IBAN is valid!</ng-template>
+    <ng-template #elseBlock>Your IBAN is not valid ;(</ng-template>
+  </div>
+</form>
