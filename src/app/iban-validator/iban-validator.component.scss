@@ -1,0 +1,22 @@
+.iban-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+}
+
+.iban-input-invalid {
+  background-color: red;
+}
+
+.iban-input-valid {
+  background-color: green;
+}
+
+.ibanValid {
+  background-color: green;
+}
+
+.ibanNotValid {
+  background-color: red;
+}
